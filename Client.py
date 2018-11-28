@@ -12,7 +12,7 @@ def beginClient(ip,port,fileName):
 		encryptMessage = SecurityModule.encryptMessage(message)
 		socketClient.send(encryptMessage)
 		received = socketClient.recv(2048)
-		if received == "EXIT":
+		if received.decode("utf-8") == "EXIT":
 			break
 		else:
 			print(received.decode("utf-8"))

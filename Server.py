@@ -55,9 +55,9 @@ def beginConnection(ip,port):
 					else:
 						stringSend = "Your nedd put the next format: RETIRAR [CANTIDAD A RETIRAR]"
 						sc.send(stringSend.encode("utf-8"))	
-
 				elif receivedDecryptArray[2] == "EXIT":
-					sc.send("EXIT".encode("utf-8"))
+					sc.send("EXIT".encode("utf-8"))			
+					break		
 				else:
 					stringSend = "This option is not correct " 
 					sc.send(stringSend.encode("utf-8"))
