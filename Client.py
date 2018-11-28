@@ -5,17 +5,17 @@ def beginClient(ip,port,fileName):
 	socketClient = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	socketClient.connect((ip, port))
 	while True:
-			user = str(input("User:  "))
-			password = str(input("Password: "))
-			instruction  = str(input(">> "))
-			message = "{} {} {}".format(user,password,instruction.upper())
-			encryptMessage = SecurityModule.encryptMessage(message)
-			socketClient.send(encryptMessage)
-			received = socketClient.recv(2048)
-			if received == "EXIT":
-				pass
-			else:
-				print(received.decode("utf-8"))
+		user = str(input("User:  "))
+		password = str(input("Password: "))
+		instruction  = str(input(">> "))
+		message = "{} {} {}".format(user,password,instruction.upper())
+		encryptMessage = SecurityModule.encryptMessage(message)
+		socketClient.send(encryptMessage)
+		received = socketClient.recv(2048)
+		if received == "EXIT":
+			break
+		else:
+			print(received.decode("utf-8"))
 	socketClient.close()
 
 
