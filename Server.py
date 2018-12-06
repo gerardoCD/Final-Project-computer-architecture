@@ -38,7 +38,7 @@ def beginConnection(ip,port):
 								stringSend = "Your deposit was successful  "
 								sc.send(stringSend.encode("utf-8"))
 					else:
-						stringSend = "Your nedd put the next format: DEPOSITAR [CANTIDAD A DEPOSITAR]"
+						stringSend = "Your need put the next format: DEPOSITAR [CANTIDAD A DEPOSITAR]"
 						sc.send(stringSend.encode("utf-8"))	
 				elif receivedDecryptArray[2] == "RETIRAR":
 					print(len(receivedDecryptArray))

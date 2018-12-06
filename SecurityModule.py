@@ -26,35 +26,35 @@ def generateKeys():
 def encryptMessage(message):
 	bin_data = message.encode("utf-8")
 
-	# Leemos el archivo con la clave publica
+	# We read the file with the public key
 	with open("public.pem", "rb") as f:
 	    recipient_key = f.read()
 
-	# Cargamos la clave pública (instancia de clase RSA)
+	# We load the public key (RSA class instance)
 	key = RSA.importKey(recipient_key)
 
-	# Instancia del cifrador asimétrico
+	# Instance of asymmetric encryption
 	cipher_rsa = PKCS1_OAEP.new(key)
 
-	# Encriptamos la cadena usando la clave pública
+	# We encrypt the string using the public key
 	enc_data = cipher_rsa.encrypt(bin_data)
 	return enc_data
 
 def decryptMessage(enc_data):
-	# Leemos el archivo con la clave privada
+	# We read the file with the private key
 	with open("private.pem", "rb") as f:
 	    recipient_key = f.read()
 
-	# Cargamos la clave privada (instancia de clase RSA)
+	# We load the private key (RSA class instance)
 	key = RSA.importKey(recipient_key, passphrase="12345")
 
-	# Instancia del cifrador asimétrico
+	# Instance of asymmetric encryption
 	cipher_rsa = PKCS1_OAEP.new(key)
 
-	# Desencriptamos la cadena usando la clave privada
+	# We decrypt the chain using the private key
 	dec_data = cipher_rsa.decrypt(enc_data)
 
-	# Decodificamos la cadena
+	# Decode the string
 	cadena = dec_data.decode("utf-8")
 
-	return cadena
+	return cadenas
